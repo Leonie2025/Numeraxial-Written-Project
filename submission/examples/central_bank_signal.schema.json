@@ -1,0 +1,269 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CentralBankCommunicationSignal",
+  "description": "Structured output produced by the central-bank communication analyser.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "bank",
+    "document_id",
+    "document_date",
+    "document_type",
+    "label",
+    "hawk_dove_score",
+    "stance_strength",
+    "model_confidence_uncalibrated",
+    "class_probability_mean",
+    "n_sentences",
+    "key_phrases",
+    "stance_update",
+    "rate_path_delta_bp",
+    "regime_shift_probability",
+    "regime_shift_model",
+    "model_metadata"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "bank": {
+      "type": "string"
+    },
+    "document_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "document_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "document_type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "label": {
+      "enum": [
+        "HAWKISH",
+        "DOVISH",
+        "NEUTRAL"
+      ]
+    },
+    "hawk_dove_score": {
+      "type": "number"
+    },
+    "stance_strength": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "model_confidence_uncalibrated": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "class_probability_mean": {
+      "type": "object",
+      "required": [
+        "dovish",
+        "hawkish",
+        "neutral"
+      ],
+      "properties": {
+        "dovish": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "hawkish": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "neutral": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0.0,
+          "maximum": 1.0
+        }
+      },
+      "additionalProperties": false
+    },
+    "n_sentences": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "key_phrases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "phrase",
+          "mentions",
+          "stance",
+          "average_sentence_hawk_dove_score",
+          "directional_strength",
+          "example"
+        ],
+        "properties": {
+          "phrase": {
+            "type": "string"
+          },
+          "mentions": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "stance": {
+            "enum": [
+              "HAWKISH",
+              "DOVISH",
+              "NEUTRAL"
+            ]
+          },
+          "average_sentence_hawk_dove_score": {
+            "type": "number"
+          },
+          "directional_strength": {
+            "type": "number",
+            "minimum": 0.0
+          },
+          "example": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "stance_update": {
+      "type": "object",
+      "required": [
+        "previous_hawk_dove_score",
+        "delta_hawk_dove_score"
+      ],
+      "properties": {
+        "previous_hawk_dove_score": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "delta_hawk_dove_score": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "rate_path_delta_bp": {
+      "type": "object",
+      "required": [
+        "1y",
+        "5y",
+        "10y"
+      ],
+      "properties": {
+        "1y": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "5y": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "10y": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "regime_shift_probability": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "regime_shift_model": {
+      "type": "object",
+      "required": [
+        "type",
+        "prior_shift_probability",
+        "stable_delta_sigma",
+        "shift_scale_multiplier",
+        "note"
+      ],
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "prior_shift_probability": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "stable_delta_sigma": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0.0
+        },
+        "shift_scale_multiplier": {
+          "type": "number",
+          "minimum": 1.0
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "model_metadata": {
+      "type": "object",
+      "required": [
+        "model_dir",
+        "training_domain",
+        "device"
+      ],
+      "properties": {
+        "model_dir": {
+          "type": "string"
+        },
+        "training_domain": {
+          "type": "string"
+        },
+        "device": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

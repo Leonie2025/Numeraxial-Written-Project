@@ -1,0 +1,20 @@
+{
+  "n_documents": 350,
+  "label_counts": {
+    "NEUTRAL": 212,
+    "HAWKISH": 107,
+    "DOVISH": 31
+  },
+  "label_fraction": {
+    "NEUTRAL": 0.6057142857142858,
+    "HAWKISH": 0.3057142857142857,
+    "DOVISH": 0.08857142857142856
+  },
+  "score_mean": 0.03512200280632117,
+  "score_std": 0.087311202256862,
+  "score_min": -0.19813187420368195,
+  "score_max": 0.28716200590133667,
+  "stance_strength_mean": 0.07416237788384024,
+  "model_confidence_uncalibrated_mean": 0.5082242958886283,
+  "neutral_threshold": 0.08
+}

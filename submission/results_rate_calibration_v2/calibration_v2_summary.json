@@ -1,0 +1,20 @@
+{
+  "sentiment_file": "results_finbert_v3/fomc_sentiment_v3.csv",
+  "communication_type": "Statement",
+  "score_level_column": "hawk_dove_score",
+  "score_update_column": "delta_hawk_dove_score",
+  "n_statement_updates": 168,
+  "n_matched_rate_events": 168,
+  "holdout_start": "2021-01-01",
+  "mapping_beta_bp_per_unit_delta_score": {
+    "1y": 2.8612971890982077,
+    "5y": 4.705194543021352,
+    "10y": 3.967915200441935
+  },
+  "train_residual_variance_bp2_for_possible_kalman_R": {
+    "1y": 30.753482955429117,
+    "5y": 61.151247993362006,
+    "10y": 50.78550087382098
+  },
+  "important_limitation": "Daily Treasury closes are a noisy proxy for FOMC repricing and include rate-decision, statement, press-conference, and other same-day information."
+}
