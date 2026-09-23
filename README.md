@@ -1,1 +1,0 @@
-# Numerixial-Written-Project
